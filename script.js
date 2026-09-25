@@ -82,32 +82,3 @@ function Roll(num,type,subtype){
     }
     return win;
 }
-
-
-<<<<<<< HEAD
-function CrearEntrada(nombre, evento, precio){
-    console.log(`==========================
-        [] ${evento}
-        Asistencia: ${nombre}
-        Precio final: ${precioFinal(precio + precio/10, 25)}
-==========================`);
-}
-
-CrearEntrada("Ada Lovelace", "JS FEST 2026", 15);
-*/
-/*
-//bucle while
-let n = 10;
-
-while(n > 0){
-    let linea =`${n}... ${n%2===0 ? "(comprobando sistemas)" : ""} ${n<=4 ? "Abrochense!" : ""}`;
-    console.log(linea);
-    n--;
-}
-console.log("Despegue!");
-*/
-
-
-=======
->>>>>>> 06f05ede99382927e74b2a4a3b00e6d3eadb84f9
-
