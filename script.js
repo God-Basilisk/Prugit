@@ -22,7 +22,17 @@ function CrearEntrada(nombre, evento, precio){
 
 CrearEntrada("Ada Lovelace", "JS FEST 2026", 15);
 */
+/*
+//bucle while
+let n = 10;
 
+while(n > 0){
+    let linea =`${n}... ${n%2===0 ? "(comprobando sistemas)" : ""} ${n<=4 ? "Abrochense!" : ""}`;
+    console.log(linea);
+    n--;
+}
+console.log("Despegue!");
+*/
 
 
 
