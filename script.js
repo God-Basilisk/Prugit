@@ -80,7 +80,28 @@ function Roll(num,type,subtype){
         default:
             break;
     }
+    Result(RNG);
     return win;
+}
+
+//function to change the html value of the roulette result to the number rolled and the color of the number rolled
+function Result(ans){
+    document.getElementById("result").value = ans;
+    // Determine the color of the number rolled
+    let color = black.includes(ans) ? "BLACK" : "RED";
+    document.getElementById("color").value = color;
+}
+
+function StartBet(name, pay, num){
+    let subtype = name;
+    // Determine the type of bet based on the name
+    let type = subtype==="1st"||subtype==="2nd"||subtype==="3rd"?"Dozen":subtype==="BLACK"||subtype==="RED"||subtype==="EVEN"||subtype==="ODD"||subtype==="HIGH"||subtype==="LOW"?"Even":name;
+
+    let win = Roll(num, type, subtype);
+    wallet = Payout(type,win,pay,wallet);
+
+    document.getElementById("wallet").value = wallet;
+
 }
 
 
