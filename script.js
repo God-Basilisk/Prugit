@@ -17,25 +17,25 @@ document.querySelectorAll('#tablero [data-name]').forEach(button => {
 function Payout(bet, win, pay, wallet) {
     if(win){
         switch (bet) {
-            case Solo:
+            case "Solo":
                 wallet += pay*35;
                 break;
-            case Split:
+            case "Split":
                 wallet += pay*17;
                 break;
-            case Street:
+            case "Street":
                 wallet += pay*11;
                 break;
-            case Corner:
+            case "Corner":
                 wallet += pay*8;
                 break;
-            case Line:
+            case "Line":
                 wallet += pay*5;
                 break;
-            case Dozen:
+            case "Dozen":
                 wallet += pay*2;
                 break;
-            case Even:
+            case "Even":
                 wallet += pay;
                 break;
             default:
@@ -103,7 +103,6 @@ function Result(ans){
     document.getElementById("result").value = ans;
     // Determine the color of the number rolled
     let color = ans===0 ? "GREEN" : (black.includes(ans) ? "BLACK" : "RED");
-    document.getElementById("color").value = color;
 
     let Resultado = document.getElementById("result");
     Resultado.classList.remove("fondo-RED", "fondo-BLACK", "fondo-GREEN");
