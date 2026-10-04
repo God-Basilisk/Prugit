@@ -39,17 +39,20 @@ function Payout(bet, win, pay, wallet) {
                 wallet += pay;
                 break;
             default:
+                console.error("Invalid bet type for payout.");
                 break;
         }
     }else{
         wallet -= pay;
     }
+    console.log("Wallet updated to: " + wallet);
     return wallet;
 }
 
 //function to roll the roulette and determine if the player won based on the bet type, number, and subtype
 function Roll(num,type,subtype){
     let RNG = Math.floor(Math.random()*37);
+    console.log("Rolled number: " + RNG);
     let win = false;
     switch (type) {
         case "Solo":
@@ -92,8 +95,10 @@ function Roll(num,type,subtype){
             }
             break;
         default:
+            console.error("Invalid bet type.");
             break;
     }
+    console.log("Player " + (win ? "won" : "lost") + " the bet.");
     Result(RNG);
     return win;
 }
@@ -107,6 +112,7 @@ function Result(ans){
     let Resultado = document.getElementById("result");
     Resultado.classList.remove("fondo-RED", "fondo-BLACK", "fondo-GREEN");
     Resultado.classList.add("fondo-" + color);
+    console.log("Result updated to: " + ans + " with color: " + color);
 }
 
 //function to start the betting process by determining the type of bet, rolling the roulette, and updating the wallet value
@@ -115,23 +121,37 @@ function StartBet(name, pay, num){
     // Determine the type of bet based on the name
     let type = subtype==="1st"||subtype==="2nd"||subtype==="3rd"?"Dozen":subtype==="BLACK"||subtype==="RED"||subtype==="EVEN"||subtype==="ODD"||subtype==="HIGH"||subtype==="LOW"?"Even":name;
 
+    console.log("Starting bet with type: " + type + ", subtype: " + subtype + ", number: " + num);
+
     let win = Roll(num, type, subtype);
     wallet = Payout(type,win,pay,wallet);
 
-    document.getElementById("wallet").value = wallet;
 
+    document.getElementById("wallet").value = wallet;
+    console.log("Wallet value updated in HTML to: " + wallet);
 }
 
 //function to handle the betting process when a button is clicked, including determining the bet type, rolling the roulette, and updating the wallet value
 function Bet(e){
     let boton = e.currentTarget;
     let pay = Number(document.getElementById("pay").value);
+    if(pay>wallet){
+        alert("No tienes suficiente dinero para apostar esa cantidad.");
+        console.error("No tienes suficiente dinero para apostar esa cantidad.");
+        return;
+    }else if(pay<=0){
+        alert("La cantidad apostada debe ser mayor a 0.");
+        console.error("La cantidad apostada debe ser mayor a 0.");
+        return;
+    }
+    console.log("Button clicked: " + boton.dataset.name + ", Bet amount: " + pay);
+
 
     let name = boton.dataset.name;
     let num = Number(boton.dataset.num);
-    let prebet = wallet;
     StartBet(name, pay, num);
-
+    console.log("end of Bet function.");
+    console.log("======================================");
 }
 
 
