@@ -1,10 +1,190 @@
 <html>
 
 <head>
-    <title>Welcome Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roulette</title>
+    <link rel="stylesheet" href="Cas.css">
     <script src="script.js" defer></script>
 </head>
 
+<h1>Mesa de Ruleta</h1>
+
+<div class="juego">
+  <div class="mesa">
+    <!--  TABLERO  -->
+    <div class="tablero" id="tablero">
+
+      <!--  CERO  -->
+      <button type="button" class="casilla cero" data-name="Solo" data-num="0"><span>0</span></button>
+
+      <!--  NÚMEROS 1-36 (Solo)  -->
+      <div class="numeros">
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="1"><span>1</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="2"><span>2</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="3"><span>3</span></button>
+
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="4"><span>4</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="5"><span>5</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="6"><span>6</span></button>
+
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="7"><span>7</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="8"><span>8</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="9"><span>9</span></button>
+
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="10"><span>10</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="11"><span>11</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="12"><span>12</span></button>
+
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="13"><span>13</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="14"><span>14</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="15"><span>15</span></button>
+
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="16"><span>16</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="17"><span>17</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="18"><span>18</span></button>
+
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="19"><span>19</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="20"><span>20</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="21"><span>21</span></button>
+
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="22"><span>22</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="23"><span>23</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="24"><span>24</span></button>
+
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="25"><span>25</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="26"><span>26</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="27"><span>27</span></button>
+
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="28"><span>28</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="29"><span>29</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="30"><span>30</span></button>
+
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="31"><span>31</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="32"><span>32</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="33"><span>33</span></button>
+
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="34"><span>34</span></button>
+        <button type="button" class="casilla num negro" data-name="Solo" data-num="35"><span>35</span></button>
+        <button type="button" class="casilla num rojo"  data-name="Solo" data-num="36"><span>36</span></button>
+      </div>
+
+      <!--  DOCENAS   -->
+      <button type="button" class="casilla docena d1" data-name="1st"><span class="vtxt">1ª DOCENA</span></button>
+      <button type="button" class="casilla docena d2" data-name="2nd"><span class="vtxt">2ª DOCENA</span></button>
+      <button type="button" class="casilla docena d3" data-name="3rd"><span class="vtxt">3ª DOCENA</span></button>
+
+      <!--  APUESTAS 1 A 1   -->
+      <button type="button" class="casilla ext e1" data-name="LOW"><span class="vtxt">1-18</span></button>
+      <button type="button" class="casilla ext e2" data-name="EVEN"><span class="vtxt">PAR</span></button>
+      <button type="button" class="casilla ext e3" data-name="RED"><div class="rombo r"></div></button>
+      <button type="button" class="casilla ext e4" data-name="BLACK"><div class="rombo n"></div></button>
+      <button type="button" class="casilla ext e5" data-name="ODD"><span class="vtxt">IMPAR</span></button>
+      <button type="button" class="casilla ext e6" data-name="HIGH"><span class="vtxt">19-36</span></button>
+
+      <!--  SPLIT   -->
+      <button type="button" class="hot Split" data-name="Split" data-num="2"  title="Split 1 / 2"   style="left:190px;top:88px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="3"  title="Split 2 / 3"   style="left:260px;top:88px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="5"  title="Split 4 / 5"   style="left:190px;top:144px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="6"  title="Split 5 / 6"   style="left:260px;top:144px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="8"  title="Split 7 / 8"   style="left:190px;top:200px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="9"  title="Split 8 / 9"   style="left:260px;top:200px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="11" title="Split 10 / 11" style="left:190px;top:256px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="12" title="Split 11 / 12" style="left:260px;top:256px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="14" title="Split 13 / 14" style="left:190px;top:312px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="15" title="Split 14 / 15" style="left:260px;top:312px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="17" title="Split 16 / 17" style="left:190px;top:368px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="18" title="Split 17 / 18" style="left:260px;top:368px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="20" title="Split 19 / 20" style="left:190px;top:424px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="21" title="Split 20 / 21" style="left:260px;top:424px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="23" title="Split 22 / 23" style="left:190px;top:480px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="24" title="Split 23 / 24" style="left:260px;top:480px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="26" title="Split 25 / 26" style="left:190px;top:536px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="27" title="Split 26 / 27" style="left:260px;top:536px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="29" title="Split 28 / 29" style="left:190px;top:592px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="30" title="Split 29 / 30" style="left:260px;top:592px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="32" title="Split 31 / 32" style="left:190px;top:648px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="33" title="Split 32 / 33" style="left:260px;top:648px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="35" title="Split 34 / 35" style="left:190px;top:704px"></button>
+      <button type="button" class="hot Split" data-name="Split" data-num="36" title="Split 35 / 36" style="left:260px;top:704px"></button>
+
+      <!--  STREET   -->
+      <button type="button" class="hot Street" data-name="Street" data-num="3"  title="Street 1-3"   style="left:120px;top:88px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="6"  title="Street 4-6"   style="left:120px;top:144px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="9"  title="Street 7-9"   style="left:120px;top:200px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="12" title="Street 10-12" style="left:120px;top:256px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="15" title="Street 13-15" style="left:120px;top:312px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="18" title="Street 16-18" style="left:120px;top:368px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="21" title="Street 19-21" style="left:120px;top:424px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="24" title="Street 22-24" style="left:120px;top:480px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="27" title="Street 25-27" style="left:120px;top:536px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="30" title="Street 28-30" style="left:120px;top:592px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="33" title="Street 31-33" style="left:120px;top:648px"></button>
+      <button type="button" class="hot Street" data-name="Street" data-num="36" title="Street 34-36" style="left:120px;top:704px"></button>
+
+      <!--  CORNER   -->
+      <button type="button" class="hot Corner" data-name="Corner" data-num="5"  title="Corner 1, 2, 4, 5"       style="left:190px;top:116px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="6"  title="Corner 2, 3, 5, 6"       style="left:260px;top:116px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="8"  title="Corner 4, 5, 7, 8"       style="left:190px;top:172px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="9"  title="Corner 5, 6, 8, 9"       style="left:260px;top:172px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="11" title="Corner 7, 8, 10, 11"     style="left:190px;top:228px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="12" title="Corner 8, 9, 11, 12"     style="left:260px;top:228px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="14" title="Corner 10, 11, 13, 14"   style="left:190px;top:284px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="15" title="Corner 11, 12, 14, 15"   style="left:260px;top:284px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="17" title="Corner 13, 14, 16, 17"   style="left:190px;top:340px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="18" title="Corner 14, 15, 17, 18"   style="left:260px;top:340px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="20" title="Corner 16, 17, 19, 20"   style="left:190px;top:396px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="21" title="Corner 17, 18, 20, 21"   style="left:260px;top:396px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="23" title="Corner 19, 20, 22, 23"   style="left:190px;top:452px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="24" title="Corner 20, 21, 23, 24"   style="left:260px;top:452px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="26" title="Corner 22, 23, 25, 26"   style="left:190px;top:508px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="27" title="Corner 23, 24, 26, 27"   style="left:260px;top:508px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="29" title="Corner 25, 26, 28, 29"   style="left:190px;top:564px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="30" title="Corner 26, 27, 29, 30"   style="left:260px;top:564px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="32" title="Corner 28, 29, 31, 32"   style="left:190px;top:620px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="33" title="Corner 29, 30, 32, 33"   style="left:260px;top:620px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="35" title="Corner 31, 32, 34, 35"   style="left:190px;top:676px"></button>
+      <button type="button" class="hot Corner" data-name="Corner" data-num="36" title="Corner 32, 33, 35, 36"   style="left:260px;top:676px"></button>
+
+      <!--  LINE  -->
+      <button type="button" class="hot Line" data-name="Line" data-num="6"  title="Line 1-6"   style="left:330px;top:116px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="9"  title="Line 4-9"   style="left:330px;top:172px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="12" title="Line 7-12"  style="left:330px;top:228px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="15" title="Line 10-15" style="left:330px;top:284px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="18" title="Line 13-18" style="left:330px;top:340px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="21" title="Line 16-21" style="left:330px;top:396px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="24" title="Line 19-24" style="left:330px;top:452px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="27" title="Line 22-27" style="left:330px;top:508px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="30" title="Line 25-30" style="left:330px;top:564px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="33" title="Line 28-33" style="left:330px;top:620px"></button>
+      <button type="button" class="hot Line" data-name="Line" data-num="36" title="Line 31-36" style="left:330px;top:676px"></button>
+
+    </div>
+  </div>
+
+  <!--  PANEL DE CONTROL  -->
+  <div class="panel">
+    <label class="campo">Apuesta 
+      <input type="number" id="pay" value="10" min="1">
+    </label>
+    <label class="campo">Saldo
+      <input type="text" id="wallet" readonly>
+    </label>
+    <label class="campo">Resultado
+      <input type="text" id="result" readonly>
+    </label>
+
+    <!--  LEYENDA  -->
+    <div class="leyenda">
+      <span><i style="background:#2b8cff"></i>Split (2 nº)</span>
+      <span><i style="background:#ff9d1c;border-radius:3px"></i>Street (3 nº)</span>
+      <span><i style="background:#b05cff"></i>Corner (4 nº)</span>
+      <span><i style="background:#ff4fa3;border-radius:3px"></i>Line (6 nº)</span>
+    </div>
+
+    
+  </div>
+</div>
 <body>
 </body>
 

@@ -1,7 +1,19 @@
 
-let wallet;
-let black = [2,4,6,8,10,11,13,17,20,22,24,26,28,29,31,33,35];
+let wallet = 1000;
+let black = [2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35];
 
+//initialize the wallet value in the html
+document.getElementById('wallet').value = wallet;
+console.log("Wallet initialized with: " + wallet);
+
+// Add event listeners to all buttons with data-name attribute
+document.querySelectorAll('#tablero [data-name]').forEach(button => {
+    button.addEventListener('click', Bet);
+    console.log("Added event listener to button with data-name: " + button.dataset.name);
+});
+
+
+//function to calculate the payout based on the bet type, whether the player won, the amount paid, and the current wallet value
 function Payout(bet, win, pay, wallet) {
     if(win){
         switch (bet) {
@@ -29,11 +41,13 @@ function Payout(bet, win, pay, wallet) {
             default:
                 break;
         }
+    }else{
+        wallet -= pay;
     }
-    wallet -= pay;
     return wallet;
 }
 
+//function to roll the roulette and determine if the player won based on the bet type, number, and subtype
 function Roll(num,type,subtype){
     let RNG = Math.floor(Math.random()*37);
     let win = false;
@@ -48,7 +62,7 @@ function Roll(num,type,subtype){
             win = num===RNG||num===RNG+1||num===RNG+2;
             break;
         case "Corner":
-            win = num===RNG||num===RNG+1||num===RNG+3||num===RNG+5;
+            win = num===RNG||num===RNG+1||num===RNG+3||num===RNG+4;
             break;
         case "Line":
             win = num===RNG||num===RNG+1||num===RNG+2||num===RNG+3||num===RNG+4||num===RNG+5;
@@ -57,7 +71,7 @@ function Roll(num,type,subtype){
             if(subtype=="1st"){
                 win = 0<RNG && RNG<=12;
             }else if(subtype=="2nd"){
-                win = 12<RNG && RNG<=24
+                win = 12<RNG && RNG<=24;
             }else if(subtype=="3rd"){
                 win = 24<RNG && RNG<=36;
             }
@@ -74,7 +88,7 @@ function Roll(num,type,subtype){
             }else if(subtype=="HIGH"){
                 win = RNG>18;
             }else if(subtype=="LOW"){
-                win = 0<RNG<=18;
+                win = 0<RNG && RNG<=18;
             }
             break;
         default:
@@ -88,10 +102,15 @@ function Roll(num,type,subtype){
 function Result(ans){
     document.getElementById("result").value = ans;
     // Determine the color of the number rolled
-    let color = black.includes(ans) ? "BLACK" : "RED";
+    let color = ans===0 ? "GREEN" : (black.includes(ans) ? "BLACK" : "RED");
     document.getElementById("color").value = color;
+
+    let Resultado = document.getElementById("result");
+    Resultado.classList.remove("fondo-RED", "fondo-BLACK", "fondo-GREEN");
+    Resultado.classList.add("fondo-" + color);
 }
 
+//function to start the betting process by determining the type of bet, rolling the roulette, and updating the wallet value
 function StartBet(name, pay, num){
     let subtype = name;
     // Determine the type of bet based on the name
@@ -103,6 +122,19 @@ function StartBet(name, pay, num){
     document.getElementById("wallet").value = wallet;
 
 }
+
+//function to handle the betting process when a button is clicked, including determining the bet type, rolling the roulette, and updating the wallet value
+function Bet(e){
+    let boton = e.currentTarget;
+    let pay = Number(document.getElementById("pay").value);
+
+    let name = boton.dataset.name;
+    let num = Number(boton.dataset.num);
+    let prebet = wallet;
+    StartBet(name, pay, num);
+
+}
+
 
 
 
